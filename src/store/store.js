@@ -12,9 +12,27 @@ export const store = createStore({
         prepUnit: 'min',
         serves: 2,
         ingredients: [
-            '50 g of sugar',
-            '100g of butter',
-            '300g of flour'
+            {
+                amount: '150',
+                unit: 'g',
+                ingredient: 'sugar'
+            },
+            {
+                amount: '100',
+                unit: 'g',
+                ingredient: 'butter'
+            },
+            {
+                amount: '300',
+                unit: 'g',
+                ingredient: 'flour'
+            },
+            {
+                amount: '1',
+                unit: 'tbsp',
+                ingredient: 'chocolate powder'
+            },
+
         ]
     },
     setActiveRecipe: action((state, payload) => {
@@ -31,9 +49,26 @@ export const store = createStore({
             prepUnit: 'min',
             serves: 2,
             ingredients: [
-                '50 g of sugar',
-                '100g of butter',
-                '300g of flour'
+                {
+                    amount: '150',
+                    unit: 'g',
+                    ingredient: 'sugar'
+                },
+                {
+                    amount: '1/2',
+                    unit: 'g',
+                    ingredient: 'butter'
+                },
+                {
+                    amount: '300',
+                    unit: 'g',
+                    ingredient: 'flour'
+                },
+                {
+                    amount: '1',
+                    unit: 'cup',
+                    ingredient: 'fresh strawberries'
+                },
             ]
         },
         {
@@ -46,9 +81,26 @@ export const store = createStore({
             prepUnit: 'min',
             serves: 4,
             ingredients: [
-                '50 g of chocolate',
-                '100g of butter',
-                '4 eggs'
+                {
+                    amount: '150',
+                    unit: 'g',
+                    ingredient: 'sugar'
+                },
+                {
+                    amount: '1/2',
+                    unit: 'cup',
+                    ingredient: 'vegetable oil'
+                },
+                {
+                    amount: '300',
+                    unit: 'g',
+                    ingredient: 'flour'
+                },
+                {
+                    amount: '1',
+                    unit: 'cup',
+                    ingredient: 'frozen cherries'
+                },
             ]
         },
         {
@@ -61,9 +113,26 @@ export const store = createStore({
             prepUnit: 'min',
             serves: 4,
             ingredients: [
-                '50 g of chocolate',
-                '100g of butter',
-                '4 eggs'
+                {
+                    amount: '150',
+                    unit: 'g',
+                    ingredient: 'sugar'
+                },
+                {
+                    amount: '1/2',
+                    unit: 'cup',
+                    ingredient: 'canola oil'
+                },
+                {
+                    amount: '300',
+                    unit: 'g',
+                    ingredient: 'flour'
+                },
+                {
+                    amount: '3',
+                    unit: '',
+                    ingredient: 'apples'
+                },
             ]
         },
         {
@@ -76,9 +145,26 @@ export const store = createStore({
             prepUnit: 'min',
             serves: 4,
             ingredients: [
-                '50 g of chocolate',
-                '100g of butter',
-                '4 eggs'
+                {
+                    amount: '150',
+                    unit: 'g',
+                    ingredient: 'sugar'
+                },
+                {
+                    amount: '1/2',
+                    unit: 'cup',
+                    ingredient: 'canola oil'
+                },
+                {
+                    amount: '300',
+                    unit: 'g',
+                    ingredient: 'flour'
+                },
+                {
+                    amount: '3',
+                    unit: '',
+                    ingredient: 'apples'
+                },
             ]
         },
     ]

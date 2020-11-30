@@ -27,8 +27,9 @@ const useStyles = makeStyles({
 
 const RecipeItem = (props) => {
     const history = useHistory();
-    const setActiveRecipe = useStoreActions((actions) => actions.setActiveRecipe);
     const classes = useStyles();
+    
+    const setActiveRecipe = useStoreActions((actions) => actions.setActiveRecipe);
     const { recipe } = props;
     // console.log('recipe Data: ', recipe);
 

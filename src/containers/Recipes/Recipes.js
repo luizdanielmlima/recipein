@@ -8,7 +8,6 @@ import { Button, FormControl, InputLabel, List, MenuItem, Select, TextField, Typ
 
 const Recipes = () => {
     const recipes = useStoreState((state) => state.recipes);
-    const activeRecipe = useStoreState((state) => state.activeRecipe);
     const [foodType, setFoodType] = React.useState('all');
 
     const handleChange = (event) => {
@@ -66,9 +65,6 @@ const Recipes = () => {
                             </Select>
                         </FormControl>
                     </form>
-                    <div>
-                        <p>Current recipe: {activeRecipe ? activeRecipe.title : 'no cur recipe!'}</p>
-                    </div>
                     <List>
                         {recipeItens}
                     </List>

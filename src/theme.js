@@ -29,11 +29,11 @@ const theme = createMuiTheme({
       fontWeight: 400,
     },
     subtitle1: {
-      fontSize: 10,
+      fontSize: 12,
       fontWeight: 500,
     },
     subtitle2: {
-      fontSize: 9,
+      fontSize: 10,
       fontWeight: 500,
     },
     button: {
