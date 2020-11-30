@@ -1,13 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Card, CardContent, CardMedia, IconButton, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import { useStoreActions } from 'easy-peasy';
 
 const useStyles = makeStyles({
     card: {
         display: 'flex',
         height: 100,
-        marginBottom: 16
+        marginBottom: 16,
+        cursor: 'pointer'
     },
     details: {
         display: 'flex',
@@ -23,12 +26,20 @@ const useStyles = makeStyles({
 
 
 const RecipeItem = (props) => {
+    const history = useHistory();
+    const setActiveRecipe = useStoreActions((actions) => actions.setActiveRecipe);
     const classes = useStyles();
     const { recipe } = props;
-    console.log('recipe Data: ', recipe);
+    // console.log('recipe Data: ', recipe);
+
+    const handleRecipeClick = (recipe) => {
+        console.log('recipe was clicked, id', recipe );
+        setActiveRecipe(recipe);
+        history.push('/recipe');
+    }
 
     let recipeContent = (
-        <Card className={classes.card}>
+        <Card className={classes.card} onClick={() => handleRecipeClick(recipe)}>
             <CardMedia
                 className={classes.cover}
                 image={`/assets/images/${recipe.photo}`}
@@ -36,7 +47,7 @@ const RecipeItem = (props) => {
             />
             <div className={classes.details}>
                 <CardContent className={classes.content}>
-                    <Typography component="h4" variant="h4">
+                    <Typography component="h4" variant="h4" color="primary">
                         {recipe.title}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
@@ -44,9 +55,9 @@ const RecipeItem = (props) => {
                     </Typography>
                 </CardContent>
                 <div className={classes.controls}>
-                    {/* <IconButton aria-label="previous">
+                    <IconButton aria-label="previous">
                         
-                    </IconButton> */}
+                    </IconButton>
                 </div>              
             </div>
         </Card>

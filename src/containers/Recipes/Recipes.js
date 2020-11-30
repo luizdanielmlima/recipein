@@ -8,6 +8,7 @@ import { Button, FormControl, InputLabel, List, MenuItem, Select, TextField, Typ
 
 const Recipes = () => {
     const recipes = useStoreState((state) => state.recipes);
+    const activeRecipe = useStoreState((state) => state.activeRecipe);
     const [foodType, setFoodType] = React.useState('all');
 
     const handleChange = (event) => {
@@ -30,10 +31,14 @@ const Recipes = () => {
         <div className={classes.container}>
             <main className={classes.main}>
                 <header className={classes.header}>
-                    <Typography variant="h1" color="primary">
+                    <img
+                        src="assets/recipein_logo_medium.png"
+                        alt="app logo"
+                    />
+                    <Typography variant="h2" className={classes.logotext}>
                         Recipe.in
                     </Typography>
-                    <Typography variant="subtitle1" color="primary">
+                    <Typography variant="subtitle1" className={classes.logotext}>
                         Your personal cookbook
                     </Typography>
                 </header>
@@ -61,6 +66,9 @@ const Recipes = () => {
                             </Select>
                         </FormControl>
                     </form>
+                    <div>
+                        <p>Current recipe: {activeRecipe ? activeRecipe.title : 'no cur recipe!'}</p>
+                    </div>
                     <List>
                         {recipeItens}
                     </List>
