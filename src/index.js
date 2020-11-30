@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { StoreProvider } from 'easy-peasy';
+import { store } from './store/store';
+
+
+
+const app = (
+  <StoreProvider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StoreProvider>
+);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <div>{app}</div>,
   document.getElementById('root')
 );
 

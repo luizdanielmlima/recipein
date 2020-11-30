@@ -1,14 +1,44 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import blue from '@material-ui/core/colors/blue';
+import orange from '@material-ui/core/colors/orange';
+import indigo from '@material-ui/core/colors/indigo';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: orange[400],
     },
     secondary: {
-      main: blue[500],
+      main: indigo[700],
+    },
+  },
+  typography: {
+    h1: {
+      fontSize: 22,
+      fontWeight: 600,
+    },
+    h2: {
+      fontSize: 20,
+      fontWeight: 600,
+    },
+    h3: {
+      fontSize: 16,
+      fontWeight: 600,
+    },
+    h4: {
+      fontSize: 14,
+      fontWeight: 600,
+    },
+    subtitle1: {
+      fontSize: 10,
+      fontWeight: 500,
+    },
+    subtitle2: {
+      fontSize: 9,
+      fontWeight: 500,
+    },
+    button: {
+      fontSize: 12,
+      fontWeight: 300,
     },
   },
 });
