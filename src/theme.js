@@ -33,8 +33,10 @@ const theme = createMuiTheme({
       fontWeight: 500,
     },
     subtitle2: {
-      fontSize: 10,
+      fontSize: 12,
       fontWeight: 500,
+      color: '#555',
+      fontStyle: 'oblique'
     },
     button: {
       fontSize: 12,

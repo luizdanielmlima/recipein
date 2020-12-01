@@ -2,13 +2,13 @@ import React from 'react';
 
 import { useStoreState } from 'easy-peasy';
 import { List, makeStyles, Typography } from '@material-ui/core';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const useStyles = makeStyles({
     item: {
         marginBottom: '8px',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
     },
     inline: {
         display: 'inline',
@@ -22,31 +22,22 @@ const useStyles = makeStyles({
     }
 })
 
-const Ingredients = () => {
+const Instructions = () => {
     const classes = useStyles();
     const activeRecipe = useStoreState((state) => state.activeRecipe);
 
-    let ingrContent;
-    ingrContent = <p>...</p>;
+    let instrContent;
+    instrContent = <p>...</p>;
 
     if (activeRecipe) {
-        const ingredients = activeRecipe.ingredients;
-        ingrContent = ingredients.map((ingr, index) => {
+        const instructions = activeRecipe.instructions;
+        instrContent = instructions.map((instruction, index) => {
             return (
                 <div key={index} className={classes.item}>
                     <div className={classes.item}>
-                        <CheckCircleOutlineIcon color="primary" className={classes.icon}/>
+                        <ChevronRightIcon color="primary" className={classes.icon}/>
                         <Typography variant="subtitle1" className={classes.inline}>
-                            {ingr.amount}
-                        </Typography>
-                        <Typography variant="subtitle1" className={classes.inline}>
-                            {ingr.unit}
-                        </Typography>
-                        <Typography variant="subtitle1" className={classes.inline}>
-                            &nbsp;
-                        </Typography>
-                        <Typography variant="subtitle1" className={classes.inline}>
-                            {ingr.ingredient}
+                            {instruction}
                         </Typography>
                     </div>   
                 </div> 
@@ -56,9 +47,9 @@ const Ingredients = () => {
 
     return (
         <List>
-            {ingrContent}
+            {instrContent}
         </List>            
     )
 }
 
-export default Ingredients;
+export default Instructions;

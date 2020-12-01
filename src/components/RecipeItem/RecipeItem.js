@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Card, CardContent, CardMedia, IconButton, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useStoreActions } from 'easy-peasy';
 
@@ -34,7 +34,6 @@ const RecipeItem = (props) => {
     // console.log('recipe Data: ', recipe);
 
     const handleRecipeClick = (recipe) => {
-        console.log('recipe was clicked, id', recipe );
         setActiveRecipe(recipe);
         history.push('/recipe');
     }
@@ -57,25 +56,11 @@ const RecipeItem = (props) => {
                 </CardContent>
                 <div className={classes.controls}>
                     <IconButton aria-label="previous">
-                        
+                        {/* fav btn here */}
                     </IconButton>
                 </div>              
             </div>
         </Card>
-        // <ListItem>
-        //     <ListItemText>
-        //         <Typography 
-        //             variant="h3"
-        //             color="primary"
-        //             className={classes.titleStyle}
-        //         >
-        //             {recipe.title}
-        //         </Typography>
-        //         <Typography variant="subtitle1" color="secondary">
-        //             {recipe.createdAt}
-        //         </Typography>
-        //     </ListItemText>   
-        // </ListItem> 
     )
 
     return (
