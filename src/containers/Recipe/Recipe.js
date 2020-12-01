@@ -10,6 +10,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Ingredients from '../../components/Ingredients/Ingredients';
 import { useHistory } from 'react-router-dom';
 import Instructions from '../../components/Instructions/Instructions';
+import FavButton from '../../components/FavButton/FavButton';
 
 
 const Recipe = () => {
@@ -54,7 +55,9 @@ const Recipe = () => {
                     <IconButton aria-label="back button" className={classes.backBtn} size="medium" onClick={goBack}>
                         <ArrowBackIcon />
                     </IconButton>
-                    {/* FAV icon here */}
+                    <div className={classes.favContainer}>
+                        <FavButton recipe={activeRecipe} size="medium"/>
+                    </div>
                 </header>
                 <div className={classes.content}>
                     <div className={classes.infobar}>

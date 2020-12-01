@@ -29,6 +29,12 @@
   justify-content: center;
 }
 
+.favContainer {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 .backBtn {
   position: absolute !important;
   top: 16px !important;

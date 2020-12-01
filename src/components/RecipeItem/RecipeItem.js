@@ -1,18 +1,20 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Card, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useStoreActions } from 'easy-peasy';
+import FavButton from '../FavButton/FavButton';
 
 const useStyles = makeStyles({
     card: {
         display: 'flex',
         height: 100,
         marginBottom: 16,
-        cursor: 'pointer'
     },
     details: {
+        position: 'relative',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
     },
@@ -20,8 +22,17 @@ const useStyles = makeStyles({
         flex: '1 0 auto',
     },
     cover: {
-        width: 100,
+        width: 120,
+        cursor: 'pointer'
     },
+    title: {
+        cursor: 'pointer'
+    },
+    favContainer: {
+        position: 'absolute',
+        bottom: '16px',
+        right: '16px'
+    }
 })
 
 
@@ -39,26 +50,25 @@ const RecipeItem = (props) => {
     }
 
     let recipeContent = (
-        <Card className={classes.card} onClick={() => handleRecipeClick(recipe)}>
+        <Card className={classes.card}>
             <CardMedia
                 className={classes.cover}
                 image={`/assets/images/${recipe.photo}`}
                 title="Live from space album cover"
+                onClick={() => handleRecipeClick(recipe)}
             />
             <div className={classes.details}>
                 <CardContent className={classes.content}>
-                    <Typography component="h4" variant="h4" color="primary">
+                    <Typography component="h4" variant="h4" color="primary" onClick={() => handleRecipeClick(recipe)} className={classes.title}>
                         {recipe.title}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
                         {recipe.createdAt}
                     </Typography>
                 </CardContent>
-                <div className={classes.controls}>
-                    <IconButton aria-label="previous">
-                        {/* fav btn here */}
-                    </IconButton>
-                </div>              
+                <div className={classes.favContainer}>
+                    <FavButton recipe={recipe} size="small"/>
+                </div>             
             </div>
         </Card>
     )

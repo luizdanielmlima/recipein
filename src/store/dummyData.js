@@ -1,6 +1,7 @@
 export const recipes = [
     {
         id: 'A0001',
+        isFav: false,
         title: 'Chocolate Cake',
         photo: 'recipe_pic_A0001.jpg',
         category: 'dessert',
@@ -39,6 +40,7 @@ export const recipes = [
     },
     {
         id: 'A0002',
+        isFav: true,
         photo: 'recipe_pic_A0002.jpg',
         title: 'Cherry Cake',
         category: 'dessert',
@@ -77,6 +79,7 @@ export const recipes = [
     },
     {
         id: 'A0003',
+        isFav: false,
         photo: 'recipe_pic_A0003.jpg',
         title: 'Apple Pie',
         category: 'dessert',
@@ -115,6 +118,7 @@ export const recipes = [
     },
     {
         id: 'A0004',
+        isFav: true,
         photo: 'recipe_pic_A0004.jpg',
         title: 'Caramel Cake',
         category: 'dessert',
