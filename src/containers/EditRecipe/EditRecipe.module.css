@@ -20,51 +20,48 @@
 
 .header {
   margin: 0;
-  min-height: 160px;
+  padding: 1rem;
+  padding-bottom: 28px;
   background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.45)
-    ),
-    url('../../assets/images/header_bg.jpg');
+    to bottom,
+    rgb(255, 167, 38, 0.9),
+    rgba(255, 167, 38, 0.8)
+  );
   background-size: cover;
   background-position: center;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.header img {
-  height: 48px;
-  margin-bottom: 8px;
-}
-
-.logotext {
-  color: white;
-  margin-bottom: 4px;
+  justify-content: flex-start;
 }
 
 .content {
   margin-top: -12px;
   padding: 2rem;
   height: 100%;
-  /* background-color: #f6f6f6; */
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-.titlebar {
-  margin-bottom: 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.btnGroup {
+  margin-bottom: 32px;
+  height: 24px;
 }
 
-.searchbar {
-  margin-bottom: 1.5rem;
+.backBtn {
+  margin-right: 8px;
+}
+
+.form {
+  width: 100%;
+}
+
+.formItem {
+  margin-bottom: 24px !important;
+}
+
+.formItemRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
 }
