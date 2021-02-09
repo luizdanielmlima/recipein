@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from '@material-ui/core/styles';
 import { lightTheme, darkTheme } from './theme';
 
-import { useStoreActions, useStoreState } from 'easy-peasy';
+import { useStoreState } from 'easy-peasy';
 
 import Recipes from './containers/Recipes/Recipes';
 import Recipe from './containers/Recipe/Recipe';
@@ -19,7 +19,7 @@ const App = () => {
   const darkMode = useStoreState((state) => state.darkMode);
 
   return (
-    <ThemeProvider theme={darkMode ? lightTheme : darkTheme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Switch>
         <Route path="/recipes" component={Recipes} />
         <Route path="/recipe" component={Recipe} />

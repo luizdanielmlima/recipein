@@ -29,9 +29,32 @@ const Recipes = () => {
   const recipesCount = useStoreState((state) => state.recipesCount);
   const [foodType, setFoodType] = React.useState('all');
 
+  // Btn stuff
+  const [btnStatus, setBtnStatus] = React.useState();
+  const [btnType, setBtnType] = React.useState('edit');
+  const timerLoading = React.useRef();
+  const timerStatus = React.useRef();
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timerLoading.current);
+      clearTimeout(timerStatus.current);
+    };
+  }, []);
+
   const handleChange = (event) => {
     console.log('food category selected: ', event.target.value);
     setFoodType(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    setBtnStatus('waiting');
+    timerLoading.current = window.setTimeout(() => {
+      setBtnStatus('error');
+      timerStatus.current = window.setTimeout(() => {
+        setBtnStatus('iddle');
+      }, 2000);
+    }, 2000);
   };
 
   let recipeItens;
@@ -70,13 +93,18 @@ const Recipes = () => {
               Recipes ({recipesCount})
             </Typography>
             <Button
-              variant="contained"
               color="primary"
               onClick={() => history.push('/editcreate')}
             >
               NEW +
             </Button>
-            <SpinnerButton />
+            <SpinnerButton
+              type={btnType}
+              status={btnStatus}
+              handleClick={handleButtonClick}
+              color="primary"
+              variant="outlined"
+            />
           </div>
           <form className={classes.searchbar}>
             <TextField id="standard-basic" label="Search..." />

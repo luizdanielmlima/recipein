@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import indigo from '@material-ui/core/colors/indigo';
-import { blue, blueGrey } from '@material-ui/core/colors';
+import { amber, blue, blueGrey } from '@material-ui/core/colors';
 
 export const lightTheme = createMuiTheme({
   palette: {
@@ -11,6 +11,9 @@ export const lightTheme = createMuiTheme({
     },
     secondary: {
       main: indigo[700],
+    },
+    background: {
+      paper: amber[50],
     },
   },
   typography: {
