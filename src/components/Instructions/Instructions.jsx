@@ -39,7 +39,7 @@ const Instructions = () => {
               className={classes.icon}
             />
             <Typography
-              variant="subtitle1"
+              variant="subtitle2"
               className={classes.inline}
             >
               {instruction}

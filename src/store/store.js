@@ -1,6 +1,7 @@
 import { action, computed, createStore } from 'easy-peasy';
 
-import { recipes } from './dummyData';
+// import { recipes } from './dummyData';
+import { recipes } from './hca_recipes';
 
 export const store = createStore({
   appTitle: 'Recipe.In',

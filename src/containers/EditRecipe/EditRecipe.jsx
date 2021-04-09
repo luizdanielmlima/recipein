@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import classes from './EditRecipe.module.css';
@@ -16,9 +16,12 @@ import {
   Select,
   TextField,
   Typography,
+  useTheme,
 } from '@material-ui/core';
+import SpinnerButton from '../../components/SpinnerButton/SpinnerButton';
 
 const EditRecipe = () => {
+  const theme = useTheme();
   const history = useHistory();
 
   const [activeTab, setActiveTab] = useState('info');
@@ -26,6 +29,29 @@ const EditRecipe = () => {
   const [prepTime, setPrepTime] = React.useState(30);
   const [prepUnit, setPrepUnit] = React.useState('min');
   const [category, setCategory] = React.useState('dessert');
+
+  // Btn stuff
+  const [btnStatus, setBtnStatus] = React.useState();
+  const [btnType, setBtnType] = React.useState('save');
+  const timerLoading = useRef();
+  const timerStatus = useRef();
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerLoading.current);
+      clearTimeout(timerStatus.current);
+    };
+  }, []);
+
+  const handleButtonClick = () => {
+    setBtnStatus('waiting');
+    timerLoading.current = window.setTimeout(() => {
+      setBtnStatus('error');
+      timerStatus.current = window.setTimeout(() => {
+        setBtnStatus('iddle');
+      }, 2000);
+    }, 2000);
+  };
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -44,8 +70,13 @@ const EditRecipe = () => {
     setCategory(event.target.value);
   };
 
-  const activeTabStyle = { color: '#FFA726' };
-  const inactiveTabStyle = { color: 'grey' };
+  const activeTabStyle = {
+    color: `${theme.palette.text.primary}`,
+    fontWeight: '500',
+  };
+  const inactiveTabStyle = {
+    color: `${theme.palette.text.disabled}`,
+  };
 
   const handleTabSelect = (id) => {
     setActiveTab(id);
@@ -172,6 +203,13 @@ const EditRecipe = () => {
             </Button>
           </ButtonGroup>
           {tabContent}
+          <SpinnerButton
+            type={btnType}
+            status={btnStatus}
+            handleClick={handleButtonClick}
+            color="primary"
+            variant="outlined"
+          />
         </div>
       </Paper>
     </div>

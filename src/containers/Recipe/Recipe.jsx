@@ -10,6 +10,7 @@ import {
   IconButton,
   Paper,
   Typography,
+  useTheme,
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -20,12 +21,13 @@ import Instructions from '../../components/Instructions/Instructions';
 import FavButton from '../../components/FavButton/FavButton';
 
 const Recipe = () => {
+  const theme = useTheme();
   const history = useHistory();
   const [activeTab, setActiveTab] = useState('ingredients');
   const activeRecipe = useStoreState((state) => state.activeRecipe);
 
-  const photoURL = `/assets/images/${activeRecipe.photo}`;
-  const recipeBgImg = {
+  const photoURL = activeRecipe.image;
+  const bgImgStyle = {
     backgroundColor:
       'linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45))',
     backgroundImage: 'url(' + photoURL + ')',
@@ -33,8 +35,13 @@ const Recipe = () => {
     backgroundPosition: 'center',
   };
 
-  const activeTabStyle = { color: '#FFA726' };
-  const inactiveTabStyle = { color: 'grey' };
+  const activeTabStyle = {
+    color: `${theme.palette.text.primary}`,
+    fontWeight: '500',
+  };
+  const inactiveTabStyle = {
+    color: `${theme.palette.text.disabled}`,
+  };
 
   const handleTabSelect = (id) => {
     setActiveTab(id);
@@ -54,7 +61,7 @@ const Recipe = () => {
   return (
     <div className={classes.container}>
       <Paper className={classes.main}>
-        <header className={classes.header} style={recipeBgImg}>
+        <header className={classes.header} style={bgImgStyle}>
           <IconButton
             aria-label="back button"
             className={classes.backBtn}
@@ -69,7 +76,7 @@ const Recipe = () => {
         </header>
         <div className={classes.content}>
           <div className={classes.infobar}>
-            <Typography
+            {/* <Typography
               variant="subtitle2"
               className={classes.infotext}
             >
@@ -92,15 +99,14 @@ const Recipe = () => {
               className={classes.infodiv}
             >
               |
-            </Typography>
+            </Typography> */}
             <div className={classes.preptime}>
               <AccessTimeIcon className={classes.prepIcon} />
               <Typography
                 variant="subtitle2"
                 style={{ marginLeft: '4px' }}
               >
-                {activeRecipe.prepTime}
-                {activeRecipe.prepUnit}
+                {activeRecipe.totalTime}
               </Typography>
             </div>
           </div>

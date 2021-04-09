@@ -39,28 +39,10 @@ const Ingredients = () => {
               className={classes.icon}
             />
             <Typography
-              variant="subtitle1"
+              variant="subtitle2"
               className={classes.inline}
             >
-              {ingr.amount}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={classes.inline}
-            >
-              {ingr.unit}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={classes.inline}
-            >
-              &nbsp;
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={classes.inline}
-            >
-              {ingr.ingredient}
+              {ingr}
             </Typography>
           </div>
         </div>
