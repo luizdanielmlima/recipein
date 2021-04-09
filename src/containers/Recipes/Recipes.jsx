@@ -30,6 +30,10 @@ const Recipes = () => {
   const [filteredRecipes, setFilteredRecipes] = React.useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     foodType === 'all'
       ? setFilteredRecipes(recipes)
       : setFilteredRecipes(

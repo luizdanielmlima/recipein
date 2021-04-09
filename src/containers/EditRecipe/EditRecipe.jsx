@@ -37,6 +37,7 @@ const EditRecipe = () => {
   const timerStatus = useRef();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     return () => {
       clearTimeout(timerLoading.current);
       clearTimeout(timerStatus.current);

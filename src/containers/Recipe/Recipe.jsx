@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useStoreState } from 'easy-peasy';
 
@@ -42,6 +42,11 @@ const Recipe = () => {
   const inactiveTabStyle = {
     color: `${theme.palette.text.disabled}`,
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleTabSelect = (id) => {
     setActiveTab(id);
