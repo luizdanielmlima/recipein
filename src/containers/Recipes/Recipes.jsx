@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { useStoreActions, useStoreState } from 'easy-peasy';
@@ -27,17 +27,25 @@ const Recipes = () => {
   const recipes = useStoreState((state) => state.recipes);
   const recipesCount = useStoreState((state) => state.recipesCount);
   const [foodType, setFoodType] = React.useState('all');
+  const [filteredRecipes, setFilteredRecipes] = React.useState([]);
 
-  const handleChange = (event) => {
-    console.log('food category selected: ', event.target.value);
+  useEffect(() => {
+    foodType === 'all'
+      ? setFilteredRecipes(recipes)
+      : setFilteredRecipes(
+          recipes.filter((recipe) => recipe.category === foodType),
+        );
+  }, [foodType, recipes]);
+
+  const handleFoodTypeChange = (event) => {
     setFoodType(event.target.value);
   };
 
   let recipeItens;
   recipeItens = <p>...</p>;
 
-  if (recipes && recipes.length > 0) {
-    recipeItens = recipes.map((recp) => {
+  if (filteredRecipes && filteredRecipes.length > 0) {
+    recipeItens = filteredRecipes.map((recp) => {
       return <RecipeItem key={recp.id} recipe={recp} />;
     });
   }
@@ -67,12 +75,13 @@ const Recipes = () => {
         <div className={classes.content}>
           <div className={classes.titlebar}>
             <Typography variant="h2" color="primary">
-              Recipes ({recipesCount})
+              Recipes ({filteredRecipes.length})
             </Typography>
             <Button
               color="primary"
               onClick={() => history.push('/editcreate')}
               variant="outlined"
+              disabled
             >
               NEW +
             </Button>
@@ -85,12 +94,12 @@ const Recipes = () => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={foodType}
-                onChange={handleChange}
+                onChange={handleFoodTypeChange}
               >
                 <MenuItem value={'all'}>All</MenuItem>
+                <MenuItem value={'bread'}>Bread</MenuItem>
                 <MenuItem value={'dessert'}>Dessert</MenuItem>
-                <MenuItem value={'dinner'}>Dinner</MenuItem>
-                <MenuItem value={'snack'}>Snack</MenuItem>
+                <MenuItem value={'main-dish'}>Main Dish</MenuItem>
               </Select>
             </FormControl>
           </form>
