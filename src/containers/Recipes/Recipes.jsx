@@ -1,9 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { useStoreActions, useStoreState } from 'easy-peasy';
-
-import classes from './Recipes.module.css';
-import RecipeItem from '../../components/RecipeItem/RecipeItem';
 import {
   Button,
   FormControl,
@@ -12,11 +10,13 @@ import {
   MenuItem,
   Paper,
   Select,
-  Switch,
   TextField,
   Typography,
 } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
+
+import classes from './Recipes.module.css';
+import RecipeItem from '../../components/RecipeItem/RecipeItem';
 
 const Recipes = () => {
   const history = useHistory();
@@ -56,13 +56,14 @@ const Recipes = () => {
           >
             Your personal cookbook
           </Typography>
+          <div className={classes.themeIconContainer}>
+            <InvertColorsIcon
+              color="primary"
+              onClick={() => setDarkMode(!darkMode)}
+              className={classes.themeIcon}
+            />
+          </div>
         </header>
-        <Switch
-          checked={darkMode}
-          onChange={() => setDarkMode(!darkMode)}
-          name="checkedA"
-          inputProps={{ 'aria-label': 'secondary checkbox' }}
-        />
         <div className={classes.content}>
           <div className={classes.titlebar}>
             <Typography variant="h2" color="primary">

@@ -18,6 +18,7 @@
 }
 
 .header {
+  position: relative;
   margin: 0;
   min-height: 160px;
   background: linear-gradient(
@@ -38,6 +39,21 @@
 .header img {
   height: 48px;
   margin-bottom: 8px;
+}
+
+.themeIconContainer {
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logotext {
